@@ -17,35 +17,14 @@ package it.unibo.oop.lab.enum2;
  */
 public enum Sport {
 
-    /*
-     * TODO
-     * 
-     * Declare the following sports:
-     * 
-     * - basket
-     * 
-     * - volley
-     * 
-     * - tennis
-     * 
-     * - bike
-     * 
-     * - F1
-     * 
-     * - motogp
-     * 
-     * - soccer
-     * 
-     */
-
-    /*
-     * TODO
-     * 
-     * [FIELDS]
-     * 
-     * Declare required fields
-     */
-
+	BASKET(Place.INDOOR, 5, "Basketball"),
+	VOLLEY(Place.INDOOR, 6, "Volleyball"),
+	TENNIS(Place.OUTDOOR, 1, "Tennis"),
+	BIKE(Place.OUTDOOR, 1, "Mountain Bike"),
+	F1(Place.OUTDOOR, 1, "Formula 1"),
+	MOTOGP(Place.OUTDOOR, 1, "MotoGP"),
+	SOCCER(Place.OUTDOOR, 11, "Football");
+	
     /*
      * TODO
      * 
@@ -55,30 +34,31 @@ public enum Sport {
      * 
      * - Sport(final Place place, final int noTeamMembers, final String actualName)
      */
+	private final Place place;
+    private final Integer noTeamMembers;
+    private final String actualName;
+    
+	private Sport(final Place place, final Integer teamMembersCount, final String actualName) {
+		this.place = place;
+		this.noTeamMembers = teamMembersCount;
+		this.actualName = actualName;
+	}
+    
+	public boolean isIndividualSport() {
+		return this.noTeamMembers == 1;
+	}
+	
+	public boolean isIndoorSport() {
+		return this.place.equals(Place.INDOOR);
+	}
+	
+	public Place getPlace() {
+		return this.place;
+	}
+	
+	public String toString() {
+		return "Sport[ name=" + this.actualName + ", place=" + this.place
+                + ", peoplePerTeam=" + this.noTeamMembers + "]";
+	}
 
-    /*
-     * TODO
-     * 
-     * [METHODS] To be defined
-     * 
-     * 
-     * 1) public boolean isIndividualSport()
-     * 
-     * Must return true only if called on individual sports
-     * 
-     * 
-     * 2) public boolean isIndoorSport()
-     * 
-     * Must return true in case the sport is practices indoor
-     * 
-     * 
-     * 3) public Place getPlace()
-     * 
-     * Must return the place where this sport is practiced
-     * 
-     * 
-     * 4) public String toString()
-     * 
-     * Returns the string representation of a sport
-     */
 }
